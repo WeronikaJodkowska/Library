@@ -1,3 +1,10 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Book, Author
+
+
+def home(request):
+    books = Book.objects.all()
+    authors = Author.objects.all()
+    context = {"books": books, "authors": authors}
+    return render(request, "homepage.html", context)
